@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useRef, useLayoutEffect} from 'react'
 import styled, { keyframes } from "styled-components";
 import iphone from "../assets/images/iphones.png"
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const moveUp = keyframes`
 100%{
@@ -53,21 +55,40 @@ const AnimatedText = styled.div`
     animation-timing-function:ease;
     text-align:center;
     animation-fill-mode: forwards;
-    // animation-delay: ${(props) => props.delay};
   }
 `;
 
 
 
 const MainHero = () => {
+  const sectioneRef = useRef(null)
+
+  gsap.registerPlugin(ScrollTrigger);
+  const sectionRef = useRef(null);
+
+  useLayoutEffect(() => {
+    let Elem = sectionRef.current;
+
+    let trigger = ScrollTrigger.create({
+      trigger: Elem,
+      start: "top top",
+      pin: true,
+      pinSpacing: false,
+    });
+
+    return () => {
+      if (trigger) trigger.kill();
+    };
+  }, []);
+
   return (
-    <Section>
+    <Section ref={sectionRef}>
       <TextContainer>
         <AnimatedText>
           <p>New</p>
           <h1>Iphone 14</h1>
-          <p class="tagline">Wonderfull.</p>
-          <p class="disclaimer">From $1099 before trade-in<sup>1</sup> or pay monthly with financing.</p>
+          <p class="tagline" >Wonderfull.</p>
+          <p class="disclaimer" >From $1099 before trade-in<sup>1</sup> or pay monthly with financing.</p>
           <img src={iphone} alt="Logo" />
         </AnimatedText>
       </TextContainer>

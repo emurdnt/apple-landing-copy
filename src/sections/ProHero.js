@@ -6,13 +6,6 @@ import inkVideo from "../assets/video/ink.mp4"
 function ProHero() {
 
  
-
-const moveUp = keyframes`
-100%{
-  transform: translateY(0);
-}
-`;
-
 const Section = styled.section`
   width: 100vw;
   height: 100vh;
@@ -46,7 +39,7 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   z-index:1;
 `;
 
