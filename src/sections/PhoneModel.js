@@ -27,8 +27,7 @@ const PhoneModel = () => {
         </Suspense>
         <Environment preset="night" />
         <AdaptiveDpr pixelated />
-        <AdaptiveEvents />
-       
+         <AdaptiveEvents />
       </Canvas>
     </Container>
   );
