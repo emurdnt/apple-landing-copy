@@ -31,7 +31,7 @@ function ProHero() {
 		}
 	`;
 	const TextContainer = styled.div`
-		width: 50vw;
+		width: 30%;
 		height: 100vh;
 		display: flex;
 		flex-direction: column;
@@ -40,6 +40,12 @@ function ProHero() {
 		z-index: 1;
 		position: absolute;
 		left: 5rem;
+	`;
+
+	const Title = styled.h2`
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 1rem;
 	`;
 
 	return (
@@ -57,7 +63,10 @@ function ProHero() {
 				</video>
 			</VideoContainer>
 			<TextContainer>
-				<h2>Always-On display. A subtle way to stay in the know. </h2>
+				<Title>
+					<span>Always-On display.</span>
+					<span>A subtle way to stay in the know.</span>
+				</Title>
 				<p class='disclaimer'>
 					With iOS 16, your personalized Lock Screen is always glanceable, so
 					you don’t have to tap to see your favourite widgets like Weather,

@@ -11,7 +11,6 @@ import React, { useRef, useLayoutEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 import { useThree } from "@react-three/fiber";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 export default function Model(props) {
 	const { nodes, materials } = useGLTF("/scene.gltf");
@@ -23,7 +22,7 @@ export default function Model(props) {
 		let timeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: "phone-model",
-				start: "top center",
+				start: "top+=10%",
 				markers: "true",
 				scrub: "true",
 				endTrigger: "#battery",
@@ -32,9 +31,10 @@ export default function Model(props) {
 		});
 
 		timeline
-			.to(camera.position, { x: 0 }, { x: 1 })
-			.fromTo(camera.position, { y: 2 }, { y: 0 })
-			.to(scene.rotation, { y: 3 });
+			.fromTo(camera.position, { x: -1, y: 1.5 }, { x: 0, y: 2 })
+			// .to(camera.position, { x: 0 }, { x: 2 })
+			.to(scene.rotation, { y: 3 })
+			.to(scene.rotation, { x: 0 });
 	}, []);
 
 	return (
